@@ -293,6 +293,8 @@ function webSQLInit() {
                         tblnames.push(results.rows.item(i).tbl_name);
                     }
                     makeRecordcountsArray(tblnames);
+                }else{
+                    dbObj.initDatabase(0);
                 }
             });
             tx.executeSql("SELECT tbl_name FROM sqlite_master WHERE type='view'", [], function (tx, results) {
@@ -400,7 +402,7 @@ function webSQLInit() {
                 tx.executeSql('INSERT INTO students (name, email) VALUES ("Kriti", "kriti@hotmail.in")');
                 tx.executeSql('INSERT INTO students (name, email) VALUES ("Sinu", "sinu@rediff.com")');
                 tx.executeSql('INSERT INTO students (name, email) VALUES ("Naidu", "naidu@support.in")', [], function (tx) {
-                    var sql = document.getElementById("editor").value;
+                    var sql = editor.getValue();
                     if (n === 0) {
                         dbObj.executeSQL(sql);
                     } else {
