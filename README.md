@@ -1,37 +1,16 @@
-## Welcome to GitHub Pages
+# Online SQL Editor
+This is an online SQL Editor which uses WebSQL. You can try any SQL statement, and play with the Database as you like (create tables,views,write queries, drop tables, columns etc.,). The Database can be restored at any time, simply by clicking the "Restore Database". By default a demo database gets created in the browser locally for testing. WebSQL is supported in Chrome, Safari, and Opera.
 
-You can use the [editor on GitHub](https://github.com/Murthy-Adapa/online-sql-editor/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+![screenshot 1](/desktop-screenshot.png?raw=true "screenshot 1")
+![screenshot 2](/fullscreen-sql-screenshot.png?raw=true "screenshot 2")
+![screenshot 3](/result-fullscreen-screenshot.png?raw=true "screenshot 3")
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### Demo
 
-### Markdown
+click [here](https://murthy-adapa.github.io/online-sql-editor/).
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
-```markdown
-Syntax highlighted code block
+### Want to contribute?
 
-# Header 1
-## Header 2
-### Header 3
+If you want to contribute to a project and make it better, your help is very welcome. Contributing is also a great way to learn more about social coding on Github, new technologies and and their ecosystems and how to make constructive, helpful bug reports, feature requests and the noblest of all contributions: a good, clean pull request.
 
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Murthy-Adapa/online-sql-editor/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
