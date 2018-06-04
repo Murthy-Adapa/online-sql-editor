@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Online SQL Editor</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="node_modules/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+        <style>
+            #body{
+                margin: 0 auto;
+                padding:0
+            }
+            #wrapper{
+                padding:0px;
+            }
+            .navbar{
+                border-radius: 0px;
+                margin-bottom: 0px;
+                background: #efefef;
+            }
+            .navbar-header > h4{
+                color: #1295c9;
+                font-family: cursive;
+            }
+            #content{
+                padding:0px;
+                margin:15px;
+                margin: 15px auto;
+                max-width: 1000px;
+            }
+            #editor_result_container{
+                height: 900px;
+                padding:0px;
+            }
+            #database_info_container{
+                height: 350px;
+                position: relative;
+                float: right;
+            }
+            #database_info{
+                position: fixed;
+                background-color: #efefef;
+                padding:20px;
+                width: 306px;
+            }
+            .table-responsive{
+                background: #FFFFFF;
+            }
+            #editor_container{
+                background-color: #efefef;
+                height: 300px;
+                padding:20px 30px;
+                margin-bottom: 15px;
+            }
+            #editor{
+                height: 150px;
+            }
+            .btn{
+                background-color: #1295c9;
+                border:none;
+                cursor: pointer;
+            }
+            #result_container{
+                background-color: #efefef;
+                height: auto;
+                padding:20px 30px;
+            }
+            #query_editor{
+                background-color: #fcfcfc;
+                white-space: pre-wrap;
+
+            }
+            #result_table{
+                background-color: #FFFFFF;
+            }
+            .table{
+                margin-bottom: 10px;
+            }
+            #result{
+                overflow-x: scroll;
+            }
+            #expand_result{
+                float: right;
+                margin-top: 10px;
+                cursor: pointer;
+            }
+            .full_screen_result{
+                position: fixed;
+                top:0;
+                left:0;
+                bottom: 0;
+                right:0;
+                width:100%;
+                height: 100%;
+                z-index: 999999;
+                overflow-y:scroll;
+            }
+            .body_overflow_hidden{
+                overflow: hidden;
+            }
+            #close_database_info{
+                float: right;
+                margin-top: -13px;
+                margin-right: -10px;
+                cursor: pointer;
+            }
+            .display_none{
+                display: none;
+            }
+            .width_100_per{
+                width: 100%;
+            }
+            #your_database_pin{
+                color:#1295c9; 
+                float: right; 
+                margin-top: 15px;
+                display: none;
+                cursor: pointer;
+            }
+            .display_block{
+                display: block !important;
+            }
+            #pin_unpin_your_database{
+                float: right;
+                margin-top: -12px;
+                margin-right: 10px;
+                cursor: pointer;
+                color: #1295c9;
+            }
+            .remove_fixed{
+                position: relative !important;
+            }
+            .disabled_color{
+                color: #333 !important;
+            }
+            @media(max-width:768px){
+                #database_info{
+                    position: relative;
+                    margin-top: 15px;
+                }
+            }
+            @media(max-width:992px){
+                #database_info{
+                    width:240px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrapper" class="container-fluid">
+            <nav class="navbar">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <h4>Online SQL Editor</h4>
+                    </div>
+                    <div class="close_pin_database_info" id="your_database_pin"><span class="glyphicon glyphicon-pushpin"></span> <p style="display: inline-block">Your database</p></div>
+                </div>
+            </nav>
+            <div id="content" class="container">
+                <div id="editor_result_container" class="col-md-8 col-sm-8">
+
+                    <div id="editor_container">
+                        <h4>SQL Statement</h4> 
+                        <div id="editor" onkeyup=""></div>
+                        <br>
+                        <button class="btn btn-primary" onclick="webSQLSubmit()">Run SQL >></button>
+                    </div>
+                    <div id="result_container"></div>
+                </div>
+                <div id="database_info_container" class= "col-md-4  col-sm-4"> 
+                    <div id="database_info">
+                        <span id="close_database_info" class="glyphicon glyphicon-remove close_pin_database_info"></span>
+                        <span id="pin_unpin_your_database" class="glyphicon glyphicon-pushpin"></span>
+                        <h4>Your database <span style="font-size:13px;" class="glyphicon glyphicon-question-sign" data-toggle="popover" data-placement="top" data-content="Database that has been created and stored in your browser." data-original-title="" title=""></span></h4>
+                        <div id="tables"></div>
+                        <br>
+                        <div id="views"></div>
+                        <br>
+                        <div id="indexes"></div>
+                        <div style="margin-top: 10px;text-align: center;color: #1295c9;"><span style="margin-right: 5px;top: 2px;" class="glyphicon glyphicon-refresh"></span><p style="display: inline-block; cursor: pointer" onclick="webSQL.clearDatabase()">Restore database</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="app.js" type="text/javascript" charset="utf-8"></script>
+</html>
